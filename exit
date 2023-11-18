@@ -1,0 +1,25 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+void exit_shell() {
+    printf("Exiting the shell...\n");
+    exit(0);
+}
+
+int main() {
+    char user_input[100];
+
+    // Example usage:
+    printf("Enter a command: ");
+    fgets(user_input, sizeof(user_input), stdin);
+    user_input[strcspn(user_input, "\n")] = '\0';  // Remove the trailing newline character
+
+    if (strcmp(user_input, "exit") == 0) {
+        exit_shell();
+    } else {
+        printf("Command not recognized: %s\n", user_input);
+    }
+
+    return 0;
+}
